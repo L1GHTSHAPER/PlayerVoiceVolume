@@ -1,5 +1,7 @@
 # PlayerVoiceVolume
 
+![LightShaper](tools/assets/lightshaper-wordmark.png)
+
 [Source code on GitHub](https://github.com/L1GHTSHAPER/PlayerVoiceVolume) | [Report an issue](https://github.com/L1GHTSHAPER/PlayerVoiceVolume/issues) | [Thunderstore](https://thunderstore.io/c/on-together/p/LightShaper/PlayerVoiceVolume/)
 
 A BepInEx mod for [On Together](https://store.steampowered.com/app/2688490/On_Together/) that lets you set the **voice chat volume of each player separately**. One friend is too quiet, another one shouts? Turn them up or down, just for you. The mod remembers the volume for every player, so it is already set the next time you meet them.

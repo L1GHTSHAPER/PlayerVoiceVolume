@@ -1,6 +1,6 @@
 {
   "name": "PlayerVoiceVolume",
-  "version_number": "1.0.1",
+  "version_number": "1.0.2",
   "website_url": "https://github.com/L1GHTSHAPER/PlayerVoiceVolume",
   "description": "Set the voice chat volume of each player separately, just for you. Adds a Voice tab to the player list (Tab); volumes are remembered per player.",
   "dependencies": [
