@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.1</TargetFramework>
     <AssemblyName>PlayerVoiceVolume</AssemblyName>
     <RootNamespace>PlayerVoiceVolume</RootNamespace>
-    <Version>1.0.2</Version>
+    <Version>1.1.1</Version>
     <LangVersion>9.0</LangVersion>
     <Nullable>disable</Nullable>
     <DebugType>none</DebugType>
@@ -40,6 +40,8 @@
     <Reference Include="UnityEngine.UI" HintPath="$(GameManaged)\UnityEngine.UI.dll" Private="false" />
     <Reference Include="UnityEngine.UIModule" HintPath="$(GameManaged)\UnityEngine.UIModule.dll" Private="false" />
     <Reference Include="UnityEngine.TextRenderingModule" HintPath="$(GameManaged)\UnityEngine.TextRenderingModule.dll" Private="false" />
+      <Reference Include="UnityEngine.IMGUIModule" HintPath="$(GameManaged)\UnityEngine.IMGUIModule.dll" Private="false" />
+      <Reference Include="UnityEngine.InputLegacyModule" HintPath="$(GameManaged)\UnityEngine.InputLegacyModule.dll" Private="false" />
   </ItemGroup>
 
 </Project>

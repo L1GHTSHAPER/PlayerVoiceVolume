@@ -115,10 +115,16 @@ namespace PlayerVoiceVolume
             view._tabLabel = tab.GetComponentInChildren<TMP_Text>(true);
             view._background = background;
             view._scroll = scroll;
+            foreach (TMP_Text text in list.GetComponentsInChildren<TMP_Text>(true)) text.color = UiSkin.TextColor;
+            if (view._tabLabel != null) view._tabLabel.color = UiSkin.TextColor;
             view._rowPrefab = rowPrefab;
             view._sliderTemplate = GameRefs.Get(GameRefs.SettingsVoiceSlider, MonoSingleton<SettingsController>.I);
             Image backgroundImage = background.GetComponent<Image>();
             view._panelSprite = backgroundImage != null ? backgroundImage.sprite : null;
+            Image paper = UiUtil.NewImage("PlayerVoiceVolume.Paper", list.transform, view._panelSprite, new Color(1f,.965f,.902f),10f);
+            UiUtil.Stretch(paper.rectTransform,Vector2.zero,Vector2.one,Vector2.zero,Vector2.zero);
+            paper.raycastTarget = false;
+            paper.transform.SetAsFirstSibling();
 
             // The first text of the Server list is the lobby name; ours shows the title instead.
             foreach (Transform child in content)
@@ -132,7 +138,7 @@ namespace PlayerVoiceVolume
                 view._empty = Object.Instantiate(view._header.gameObject, content, false).GetComponent<TMP_Text>();
                 view._empty.name = "Text_NoPlayers";
                 view._empty.fontSize = view._header.fontSize * 0.85f;
-                view._empty.color = players.IconActiveColor;
+                view._empty.color = UiSkin.TextColor;
                 view._empty.gameObject.SetActive(false);
             }
 
@@ -212,7 +218,7 @@ namespace PlayerVoiceVolume
 
         void ShowTabAsSelected(bool selected, bool animate)
         {
-            Color color = selected ? ColorOf(GameRefs.SelectedColor, FallbackSelected) : ColorOf(GameRefs.GreenColor, FallbackGreen);
+            Color color = selected ? new Color(1f,.965f,.902f) : new Color(.976f,.867f,.784f);
             Animate(_tabButton, color, selected ? SelectedHeight : UnselectedHeight, animate);
         }
 
@@ -268,7 +274,7 @@ namespace PlayerVoiceVolume
             if (_tabLabel != null)
                 _tabLabel.text = Strings.Tab;
             if (_header != null)
-                _header.text = $"{Strings.Header}  <size=70%><color=#{ColorUtility.ToHtmlStringRGB(_players.IconActiveColor)}>· {Strings.Hint}</color></size>";
+                _header.text = $"{Strings.Header}  <size=70%><color=#796B5B>· {Strings.Hint}</color></size>";
             if (_empty != null)
                 _empty.text = Strings.NoPlayers;
         }
@@ -370,7 +376,7 @@ namespace PlayerVoiceVolume
             TextMeshProUGUI header = GameRefs.Get(GameRefs.InfoHeader, _players);
             TextMeshProUGUI info = GameRefs.Get(GameRefs.InfoText, _players);
             if (headerBackground != null)
-                headerBackground.color = ColorOf(GameRefs.OrangeColor, FallbackServer);
+                headerBackground.color = new Color(.976f,.867f,.784f);
             if (header != null)
                 header.text = title;
             if (info != null)

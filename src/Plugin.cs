@@ -13,7 +13,7 @@ namespace PlayerVoiceVolume
     {
         public const string PluginGuid = "ontogether.playervoicevolume";
         public const string PluginName = "PlayerVoiceVolume";
-        public const string PluginVersion = "1.0.2";
+        public const string PluginVersion = "1.1.1";
 
         internal static Plugin Instance { get; private set; }
         internal static ManualLogSource Log { get; private set; }
@@ -44,8 +44,11 @@ namespace PlayerVoiceVolume
             Store = new VolumeStore(Path.Combine(Paths.ConfigPath, PluginGuid + ".volumes.json"));
             Store.Load();
             _applier = new VoiceApplier();
+            var settings = ConfigMenu.Create(gameObject, PluginName, "voice", Config, () => GameAccess.PlayerPanel != null);
+            settings.ExtraControls = () => GUILayout.Label(UiEnvironment.L("Per-player volume: Tab → Voice", "Громкость игроков: Tab → Голос"));
 
             _harmony = new Harmony(PluginGuid);
+            UiEnvironment.InstallInputGuard(_harmony);
             Patches.Apply(_harmony);
 
             Config.SettingChanged += OnSettingChanged;

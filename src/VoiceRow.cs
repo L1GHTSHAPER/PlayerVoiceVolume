@@ -72,6 +72,7 @@ namespace PlayerVoiceVolume
                 throw new InvalidOperationException("the player row layout has changed");
 
             _name = name;
+            _name.color = UiSkin.TextColor;
             _voiceButton = (RectTransform)voiceButton.transform;
             _voiceBackground = GameRefs.Get(GameRefs.ItemVoiceBg, item);
             _voiceIcon = GameRefs.Get(GameRefs.ItemVoiceIcon, item);
@@ -127,6 +128,8 @@ namespace PlayerVoiceVolume
                 new Vector2(SliderX, 0f), new Vector2(SliderWidth, SliderHeight));
             _sliderGroup = _slider.gameObject.AddComponent<CanvasGroup>();
             _slider.onValueChanged.AddListener(OnSliderChanged);
+            foreach (Image image in _slider.GetComponentsInChildren<Image>(true))
+                image.color = image.transform == _slider.handleRect || image.transform == _slider.fillRect ? new Color(.67f,.31f,.24f) : new Color(.87f,.82f,.73f);
 
             // Value: same font and colour as the name.
             _value = Object.Instantiate(_name.gameObject, transform, false).GetComponent<TMP_Text>();
@@ -155,9 +158,26 @@ namespace PlayerVoiceVolume
             UiUtil.SetOnClick(reset, OnResetButton);
             UiUtil.AddHover(reset.gameObject, ShowResetInfo, HideInfo);
             UiUtil.DisableNavigation(reset);
+            Image resetBackground = reset.GetComponent<Image>();
+            if (resetBackground != null) resetBackground.color = new Color(.976f,.867f,.784f);
+            if (icon != null) icon.color = new Color(.67f,.31f,.24f);
 
             if (buttonGroup != null && buttonGroup != transform && buttonGroup.childCount == 0)
                 Object.DestroyImmediate(buttonGroup.gameObject);
+        }
+
+        void LateUpdate()
+        {
+            // Fractions of the native row replace fixed slider/value coordinates; CanvasScaler owns physical size.
+            float width = ((RectTransform)transform).rect.width;
+            if(width < 200 || _name == null || _slider == null) return;
+            var nameRect = _name.rectTransform;
+            nameRect.sizeDelta = new Vector2(Mathf.Max(60,width*.42f-nameRect.anchoredPosition.x-18),nameRect.sizeDelta.y);
+            var sliderRect = (RectTransform)_slider.transform;
+            sliderRect.anchoredPosition = new Vector2(width*.43f,0);
+            sliderRect.sizeDelta = new Vector2(width*.31f,SliderHeight);
+            _value.rectTransform.anchoredPosition = new Vector2(width*.75f,nameRect.anchoredPosition.y);
+            _value.rectTransform.sizeDelta = new Vector2(width*.13f,nameRect.sizeDelta.y);
         }
 
         /// <summary>Shows a player. The slider is only moved for a different player or when forced.</summary>
