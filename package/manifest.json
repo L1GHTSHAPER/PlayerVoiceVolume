@@ -1,6 +1,6 @@
 {
   "name": "PlayerVoiceVolume",
-  "version_number": "1.1.1",
+  "version_number": "1.1.2",
   "website_url": "https://github.com/L1GHTSHAPER/PlayerVoiceVolume",
   "description": "Per-player voice volume in Tab → Voice, with saved volumes, mute and reset. Cream controls and a grouped microphone side button for defaults and limits. English and Russian settings.",
   "dependencies": [

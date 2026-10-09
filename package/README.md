@@ -12,7 +12,7 @@ A BepInEx mod for [On Together](https://store.steampowered.com/app/2688490/On_To
 
 The microphone side button opens/closes default volume and volume-limit settings. Per-player controls remain in **Tab → Voice**, with the same saved values, mute and reset actions.
 
-Cream panels, warm brown text, coral accents, rounded controls and game fonts. Side buttons form one group, show the mod name and the settings hotkey (where available), and move away from visible UI panels. If both edges are blocked, the buttons wait until space becomes available. Existing hotkeys, commands and configuration keys are preserved. Menus scroll on smaller screens; changes save automatically. Where shown, **Apply** saves a field draft. Invalid values keep the saved setting.
+Cream panels, warm brown text, coral accents, rounded controls and game fonts. Side buttons align with the game's right-hand controls and extend beyond the right edge of the screen. They use the game's fill, outline and spacing, with proportionate icons and mod-name/hotkey hints. The group stays on the right, avoids open panels and hides until safe space becomes available. Existing hotkeys, commands and configuration keys are preserved. Menus scroll on smaller screens; changes save automatically. Where shown, **Apply** saves a field draft. Invalid values keep the saved setting.
 
 ## Features
 
@@ -63,7 +63,7 @@ The saved volumes are in `BepInEx/config/ontogether.playervoicevolume.volumes.js
 
 Боковая кнопка микрофона открывает и закрывает настройки громкости по умолчанию и её предела. Управление каждым игроком остаётся в **Tab → Голос**; сохранённые значения, отключение звука и сброс работают как раньше.
 
-Кремовые панели, коричневый текст, коралловые акценты и скруглённые элементы. Боковые кнопки собраны в одну группу; при наведении видны название мода и клавиша настроек, если она есть. Группа избегает видимых игровых панелей; когда места нет, кнопки скрываются до освобождения края. Настройки и прежние клавиши сохранены. Низкие окна прокручиваются, изменения сохраняются автоматически; кнопка «Применить», где она есть, сохраняет введённое значение.
+Кремовые панели, коричневый текст, коралловые акценты и скруглённые элементы. Боковые кнопки выровнены с игровыми справа и продолжаются за правый край экрана. Они используют игровые заливку, обводку и интервалы; значки сохраняют пропорции, а при наведении видны название мода и клавиша настроек. Группа остаётся справа, избегает открытых панелей и скрывается, пока не появится свободное место. Настройки и прежние клавиши сохранены. Низкие окна прокручиваются, изменения сохраняются автоматически; кнопка «Применить», где она есть, сохраняет введённое значение.
 
 Мод позволяет настроить **громкость голосового чата для каждого игрока отдельно** — только для вас, другие игроки ничего не заметят.
 
@@ -75,6 +75,6 @@ The saved volumes are in `BepInEx/config/ontogether.playervoicevolume.volumes.js
 - Настройки — `BepInEx/config/ontogether.playervoicevolume.cfg`, сохранённые громкости — `BepInEx/config/ontogether.playervoicevolume.volumes.json`.
 
 
-Side settings buttons are opaque squares with rounded corners, a dark brown outline and proportionate icons, sized to match the game's right-hand controls. They hide with the native controls in Desktop mode, including tooltips and pointer hit areas.
+Side settings buttons match the game's right-hand controls: the same height, left edge, spacing, native fill and brown outline. Their right ends extend beyond the screen; icons keep their proportions. They hide with the native controls in Desktop mode, including tooltips and pointer hit areas.
 
-Боковые кнопки настроек стали непрозрачными и квадратными: скруглённые углы, коричневая обводка и значки без растягивания. Размер соответствует высоте игровых кнопок справа. В Desktop-режиме они скрываются вместе с игровыми; подсказки и области нажатия также отключаются.
+Боковые кнопки настроек повторяют игровые справа: одинаковые высота, левый край, интервалы, заливка и коричневая обводка. Правые концы уходят за экран; значки сохраняют пропорции. В Desktop-режиме кнопки скрываются вместе с игровыми; подсказки и области нажатия также отключаются.
